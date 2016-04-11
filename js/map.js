@@ -1,6 +1,6 @@
 
 $.getJSON({
-    url: "china.json",
+    url: "data/china.json",
     success: makeMap
 });
 
