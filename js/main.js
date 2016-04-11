@@ -40,7 +40,7 @@ var line = d3.svg.line()
 var svg = d3.select("#svg")
     .append("svg")
     .attr("width", LineChart_width)
-    .attr("height", LineChart_width)
+    .attr("height", LineChart_height)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 

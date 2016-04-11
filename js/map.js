@@ -4,14 +4,10 @@ $.getJSON({
     success: makeMap
 });
 
-// map making code goes in here
 function makeMap(china) {
 
     var center = d3.geo.centroid(china);
-    /*
-        First we need to create the actual d3 map
-    */
-    // a good h/w ratio for this map;
+
     var ratio = 500/960;
     
     var mapwidth = 500,
@@ -26,8 +22,8 @@ function makeMap(china) {
         .projection(projection);
     
     var svg = d3.select("#map").append("svg")
-        .attr("mapwidth", mapwidth + 200)
-        .attr("mapheight", mapheight);
+        .attr("width", mapwidth + 200)
+        .attr("height", mapheight);
     
     var g = svg.append("g");
     
@@ -38,8 +34,6 @@ function makeMap(china) {
         .selectAll("path")
         .data(china.features)
         .enter().append("path")
-        //.attr('id', function(d) { 
-         //   return "fips_" + d.id; })
         .attr("d", path);
     
     // add states we will explode! (these stay 
@@ -65,9 +59,7 @@ function makeMap(china) {
             return [650, mapheight/2-30];
         })    
 
-    
-
-    
+      
     var highlighted_state = null;
     
     explode_states.on('click', function() {
