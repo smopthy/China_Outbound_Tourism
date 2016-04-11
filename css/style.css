@@ -141,6 +141,12 @@ opacity: 1;
 font-weight: bold;
 }
 
+.HighlightChina{
+stroke:orange;
+stroke-opacity:1;
+stroke-width:3px;
+}
+
 #states path {
     fill : #00ffbf;
     stroke : #fff;

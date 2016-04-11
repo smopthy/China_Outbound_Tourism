@@ -165,7 +165,12 @@ lines.enter()
          .attr("stroke", "black")
          .attr("stroke-width", 2)
          .attr("class", "line")
-         .classed("unfocused", true);
+         .classed("unfocused", true)
+         .classed("HighlightChina", function)(d){ 
+                if (d[0].countryName == "China"){
+                return true;
+                } else { return false; }
+        });
     
 
 
