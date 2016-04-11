@@ -66,43 +66,34 @@ xScale.domain(d3.extent(years, function(d) {
 
 var newExp = [];
 expenditure.forEach(function(d,i) {
-years.forEach(function(year) {
-    newExp.push({countryName: d.CountryName, 
-                    year: year,
-                    number: +d[year] * 0.000001
-                   });            
-});
+    years.forEach(function(year) {
+        newExp.push({countryName: d.CountryName, 
+                        year: year,
+                        number: +d[year] * 0.000001
+                       });            
+    });
 });
     console.log(newExp);
 
 var newPop = [];
 expenditure.forEach(function(d,i) {
-years.forEach(function(year) {
-    var match = population.filter(function(p) {
-        return p.CountryName == d.CountryName;
-    })[0];
-
-    newPop.push({countryName: d.CountryName, 
-                    year: year,
-                    number: +d[year] / +match[year]
-                   });
-});            
+    years.forEach(function(year) {
+        var match = population.filter(function(p) {
+            return p.CountryName == d.CountryName;
+        })[0];
+        newPop.push({countryName: d.CountryName, 
+                        year: year,
+                        number: +d[year] / +match[year]
+                       });
+    });            
 });
 
-     console.log(newPop);
+     console.log("newPop", newPop);
 
 d3.select("#Tot").on("click", function(d, i) {
             d3.selectAll("button").classed("selected", false);
             d3.select(this).classed("selected", true);
             redraw(newExp,59503);
-      d3.selectAll("lines")
-        .attr("stroke-dasharray", totalLength + " " + totalLength)
-        .attr("stroke-dashoffset", totalLength)
-        .style("display", null)
-        .transition()
-          .duration(2000)
-          .ease("linear")
-          .attr("stroke-dashoffset", 0);
     });
    
 d3.select("#Per").on("click", function(d, i) {
@@ -154,6 +145,14 @@ groups
 groups.exit()
     .remove();
 
+groups.attr("id", function(d) {   
+        if (d.key == "China"){
+            return "China";
+                } else { 
+                return "other";
+                }
+        });
+
 
 var lines = groups.selectAll("path.line")
          .data(function(d) {return [d.values];});
@@ -165,23 +164,26 @@ lines.enter()
          .attr("stroke", "black")
          .attr("stroke-width", 2)
          .attr("class", "line")
-         .classed("unfocused", true)
-         .classed("HighlightChina", function)(d){ 
-                if (d[0].countryName == "China"){
-                return true;
-                } else { return false; }
-        });
-    
-
+         .classed("unfocused", true);
 
 lines.exit()
         .remove();
 
     
 lines
+        .classed("HighlightChina", function(d) { 
+                if (d[0].countryName == "China"){
+                    console.log("true");
+                    return true;
+                } else { 
+                return false; 
+                }
+        })
         .transition()
         .duration(1000)
         .attr("d",line);
+
+d3.select("g.lines#China").moveToFront();
    
 var circles = groups.selectAll("circle")
         .data(function(d) {
@@ -227,19 +229,23 @@ labels.transition()
         var lastYear = d[d.length - 1].year;
         return xScale(dateFormat.parse(lastYear));})
     .attr("dx", ".35em")
-    .attr("dy", ".10em");
+    .attr("dy", function(d) {
+        if (d[d.length-1].countryName == "China") {
+            return "-.5em";
+        } else { return ".10em"; }
+    });
 
     
 labels.classed("textshow", function(d,i){
-    if (d && +d[d.length - 1].number > cutoff) {
-return true;
+    if (d && +d[d.length - 1].number > cutoff || d && d[d.length-1].countryName == "China") {
+        return true;
 }
     else {return false; };
 });
     
 
 labels.classed("texthide", function(d, i) {
-    if (d && +d[d.length - 1].number < cutoff) {
+    if (d && +d[d.length - 1].number < cutoff && d && d[d.length-1].countryName !== "China" ) {
 return true;
 }
     else {return false; };
@@ -260,10 +266,21 @@ function mouseoverFunc(d){
         .style("opacity", 1)
         .attr("r", 4);
 
-    tooltip
+
+   if (d3.select("#Tot").classed("selected")) {
+
+       return tooltip
         .style("display", null)
         .html("<p>Country: <span style='color:#b35900'>" + d.countryName +"</span>" + "<br>Year: <span style='color:#b35900'>" + d.year +"</span>" + "<br>Total:<span style='color:#b35900'> " + d.number + "</span>" + "</p>");
-}
+   }
+    
+    else {
+    
+    return tooltip
+        .style("display", null)
+        .html("<p>Country: <span style='color:#b35900'>" + d.countryName +"</span>" + "<br>Year: <span style='color:#b35900'>" + d.year +"</span>" + "<br>Per Capita:<span style='color:#b35900'> " + d3.round(+d.number, 1)+ "</span>" + "</p>");
+    }
+} // end mouseover
 
 function mousemoveFunc(d) {
     console.log(d3.event.pageX, d3.event.pageY);
@@ -295,3 +312,9 @@ d3.select(this).select("path")
 d3.select(this).select("text.label")
     .attr("id",null);
 }
+
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+    this.parentNode.appendChild(this);
+  });
+};
