@@ -139,7 +139,25 @@ font: 15px sans-serif;
 fill: orange;
 opacity: 1;
 font-weight: bold;
-
 }
 
+#states path {
+    fill : #00ffbf;
+    stroke : #fff;
+    stroke-width: 2px;
+}
+
+#explode-states path {
+    fill : rgba(0,0,0,0);
+    stroke : rgba(0,0,0,0);
+}
+
+#explode-states:hover {
+    cursor:pointer;
+}
+
+#explode-states path.highlighted-state {
+    fill: #009973;
+    
+}
 </style>

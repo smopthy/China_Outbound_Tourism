@@ -37,7 +37,7 @@ var line = d3.svg.line()
     .y(function(d) {return yScale(+d.number);
 				});
 
-var svg = d3.select("#svg1")
+var svg = d3.select("#svg")
     .append("svg")
     .attr("width", LineChart_width)
     .attr("height", LineChart_width)
