@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
+  
   <body>
     <div class="row">
       <div class="large-12 columns">
@@ -16,41 +17,57 @@
       </div>
     </div>
 
-          <div class="row">
-            <div class="large-12 medium-12 columns">
+    <div class="row">
+        <div class="large-12 medium-12 columns">
              <h6>International Tourism Expenditure(Total and Per capital)</h6>
-    <div class="btn-group" role="group">
-        <button type="button" id="Tot">Total Expenditure</button>
-        <button type="button" id="Per">Per Capital Expenditure</button>
+                    <div class="btn-group" role="group">
+                    <button type="button" id="Tot">Total Expenditure</button>
+                    <button type="button" id="Per">Per Capital Expenditure</button>
+                    </div>
+           
+                    <div id="BigLinechart"></div>
+        </div>
+    </div>
+    
+     <div class="row">
+    
+        <div id="button-wrap" role="group">
+            <button id="Top10" class = "button selected" >Top 10 Places</button>
+            <button id="Changing_Trend" class = "button" >Highest Changing Rate</button>
+            <button id="Country" class = "button" >Places</button>
         </div>
            
-    <div id="svg"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-6 medium-6 small-6">
-              <div id="map"></div>
-            </div>
-            <div class="large-6 medium-6 small-6">
+        <div id="vis"></div>
+     
+              </div>
               
-            </div>
-          </div>
+      <div class="row">
+                <div class="large-6 medium-6 small-6">
+                    <div id="map"></div>
+                </div>
+        <div class="large-6 medium-6 small-6">
+
+        </div>
+      </div>
      
     
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
-            
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/what-input.js"></script>
+<script src="js/vendor/foundation.js"></script>
+<script src="js/app.js"></script>    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 <script src="https://d3js.org/queue.v1.min.js"></script>
 <script type="text/javascript" src="js/d3.v3.js"></script>
-
- <script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="http://bsouthga.github.io/d3-exploder/exploder.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.js"></script>
+ <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
- <script type="text/javascript" src="js/main.js"></script>
- <script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/TotalLinechart.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/smallmultiple.js"></script>
+
   </body>
 </html>

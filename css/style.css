@@ -147,22 +147,22 @@ stroke-opacity:1;
 stroke-width:3px;
 }
 
-#states path {
+#provinces path {
     fill : #00ffbf;
     stroke : #fff;
     stroke-width: 2px;
 }
 
-#explode-states path {
+#explode-provinces path {
     fill : rgba(0,0,0,0);
     stroke : rgba(0,0,0,0);
 }
 
-#explode-states:hover {
+#explode-provinces:hover {
     cursor:pointer;
 }
 
-#explode-states path.highlighted-state {
+#explode-provinces path.highlighted-province {
     fill: #009973;
     
 }

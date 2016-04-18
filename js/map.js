@@ -1,9 +1,3 @@
-
-$.getJSON({
-    url: "data/china.json",
-    success: makeMap
-});
-
 function makeMap(china) {
 
     var center = d3.geo.centroid(china);
@@ -29,8 +23,8 @@ function makeMap(china) {
     
     console.log(china);
 
-    var states = g.append("g")
-        .attr("id", "states")
+    var provinces = g.append("g")
+        .attr("id", "provinces")
         .selectAll("path")
         .data(china.features)
         .enter().append("path")
@@ -38,8 +32,8 @@ function makeMap(china) {
     
     // add states we will explode! (these stay 
     // add states which will form the static map
-    var explode_states = g.append("g")
-        .attr("id", "explode-states")
+    var explode_provinces = g.append("g")
+        .attr("id", "explode-provinces")
         .selectAll("path")
         .data(china.features)
         .enter().append("path")
@@ -60,21 +54,21 @@ function makeMap(china) {
         })    
 
       
-    var highlighted_state = null;
+    var highlighted_province = null;
     
-    explode_states.on('click', function() {
+    explode_provinces.on('click', function() {
     
-        d3.selectAll('.highlighted-state')
+        d3.selectAll('.highlighted-province')
             .transition()
             .duration(500)
             .attr("d", path)
             .attr("transform", "translate(0,0)")
             .each('end', function() {
-                d3.select(this).classed('highlighted-state', false);
+                d3.select(this).classed('highlighted-province', false);
             })
             
         d3.select(this)
-            .classed('highlighted-state', true)
+            .classed('highlighted-province', true)
             .transition()
             .duration(500)
             .call(exploder); 
