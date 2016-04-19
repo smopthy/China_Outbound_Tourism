@@ -1,33 +1,6 @@
 function smallMultiple(rawData) {
-   
 
-        
-var dateFormat = d3.time.format("%Y");
-var Top10,Changing_Trend,Country;
-    
-    rawData.forEach(function(d) { 
-    d.date = dateFormat.parse(d.Year)
-    })
-    
-    var nest = d3.nest().key(function(d){
-     return d.Location;
-    })
-    .sortValues(function(a,b){ return d3.ascending(a.date, b.date); })
-    .entries(rawData);
-    
-    return nest;     
-        
-      data = nest;
-      // default sort order
-      data.sort(function(a, b){ return d3.descending(+a.values[a.values.length-1].Tourists, +b.values[b.values.length-1].Tourists); });
-    
-      layoutCharts(data);
-console.log(data);
-    
-
-
-
-var fullwidth = 250,
+    var fullwidth = 250,
     fullheight = 220,
     margin = {top: 15,right: 20,bottom: 40,left: 40};
 
@@ -68,14 +41,31 @@ var line = d3.svg.line()
 
 
 function setupScales(data){
-    var extentX, maxY;
+    var extentX;
+
     extentX = d3.extent(data[0].values, function(d){
         return xValue(d);
     })
         return xScale.domain(extentX);
 }
 
+function transformData(rawData){
+var dateFormat = d3.time.format("%Y");
+var Top10,Changing_Trend,Country;
+    
+    rawData.forEach(function(d) { 
+    d.date = dateFormat.parse(d.Year)
+    })
+    
+    var nest = d3.nest().key(function(d){
+     return d.Location;
+    })
+    .sortValues(function(a,b){ return d3.ascending(a.date, b.date); })
+    .entries(rawData);
+    
+    return nest;
 
+}
 
 var cols, margin_left;
   function calibrate() {
@@ -89,7 +79,7 @@ var cols, margin_left;
   }
 
   function getTop(i) {
-    return fullheight * Math.floor(i/cols) + "px";
+    return 610 + fullheight * Math.floor(i/cols) + "px";
   }
 
   function setChartDivHeight(data_to_plot) {
@@ -117,14 +107,24 @@ var cols, margin_left;
     charts.exit().remove();
   }
 
+var data;
+drawPlots(rawData);
 
+function drawPlots(rawData) {
+      data = transformData(rawData);
+      // default sort order
+      data.sort(function(a, b){ return d3.descending(+a.values[a.values.length-1].Tourists, +b.values[b.values.length-1].Tourists); });
+    
+      layoutCharts(data);
+console.log(data);
+    }
+ 
 function appendChart(data, i) {
     
      maxY = d3.max(data.values, function(d){
         return +d.Tourists;
     });
     
-    //maxY = maxY + (maxY * 1 / 4);
     yScale.domain([0, maxY]);
     
 area.y1(function(d){ return yScale(yValue(d)); });
@@ -154,7 +154,7 @@ line.y(function(d){ return yScale(yValue(d)); });
           return area(d.values);
       });
       lines.append("path")
-        .attr("class", "line")
+        .attr("class", "line1")
         .style("pointer-events", "none")
         .attr("d", function(d) {
         return line(d.values);
@@ -262,4 +262,5 @@ function mouseover() {
       d3.selectAll("text.caption").text("");
       d3.selectAll("text.year").text("");
     };
+    
 }

@@ -134,6 +134,8 @@ stroke-opacity:0.7;
 }
 
 
+
+
 #highlight{
 font: 15px sans-serif;
 fill: orange;
@@ -166,4 +168,51 @@ stroke-width:3px;
     fill: #009973;
     
 }
+
+.line1{
+  fill: none;
+  stroke: #ff9900;
+  stroke-width: 1.4px;
+}
+
+.chart {
+  position: absolute;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left:0;
+}
+
+.area{
+ fill: #ffcc80;
+}
+
+
+.caption{
+font-family: sans-serif;
+    font-size: 10px;
+        fill:dimgrey;
+}
+
+.background{
+fill: none;
+}
+
+.year{
+font-family: sans-serif;
+    font-size: 10px;
+        fill:dimgrey;
+}
+
+.static_year {
+    font-family: sans-serif;
+    font-size: 10px;
+        fill:dimgrey;
+}
+
+.hidden {
+  display:none;
+  opacity: 0.0;
+}
+
+
 </style>
