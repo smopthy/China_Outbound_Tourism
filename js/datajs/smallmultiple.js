@@ -1,6 +1,5 @@
 function smallMultiple(rawData) {
-
-    var fullwidth = 250,
+var fullwidth = 250,
     fullheight = 220,
     margin = {top: 15,right: 20,bottom: 40,left: 40};
 
@@ -39,34 +38,6 @@ var line = d3.svg.line()
            .x(function(d){ return xScale(xValue(d)); })
            .y(function(d){ return yScale(yValue(d)); });
 
-
-function setupScales(data){
-    var extentX;
-
-    extentX = d3.extent(data[0].values, function(d){
-        return xValue(d);
-    })
-        return xScale.domain(extentX);
-}
-
-function transformData(rawData){
-var dateFormat = d3.time.format("%Y");
-var Top10,Changing_Trend,Country;
-    
-    rawData.forEach(function(d) { 
-    d.date = dateFormat.parse(d.Year)
-    })
-    
-    var nest = d3.nest().key(function(d){
-     return d.Location;
-    })
-    .sortValues(function(a,b){ return d3.ascending(a.date, b.date); })
-    .entries(rawData);
-    
-    return nest;
-
-}
-
 var cols, margin_left;
   function calibrate() {
     cols = Math.floor(window.innerWidth/fullwidth),
@@ -79,7 +50,7 @@ var cols, margin_left;
   }
 
   function getTop(i) {
-    return 610 + fullheight * Math.floor(i/cols) + "px";
+    return 2030 + fullheight * Math.floor(i/cols) + "px";
   }
 
   function setChartDivHeight(data_to_plot) {
@@ -109,6 +80,32 @@ var cols, margin_left;
 
 var data;
 drawPlots(rawData);
+    
+function setupScales(data){
+    var extentX, maxY;
+
+    extentX = d3.extent(data[0].values, function(d){
+        return xValue(d);
+    })
+        return xScale.domain(extentX);
+}
+
+function transformData(rawData){
+var dateFormat = d3.time.format("%Y");
+var Top10,Changing_Trend,Country;
+
+    rawData.forEach(function(d) { 
+    d.date = dateFormat.parse(d.Year)
+    })
+    
+    var nest = d3.nest().key(function(d){
+     return d.Location;
+    })
+    .sortValues(function(a,b){ return d3.ascending(a.date, b.date); })
+    .entries(rawData);
+    
+    return nest;
+}
 
 function drawPlots(rawData) {
       data = transformData(rawData);
@@ -116,14 +113,16 @@ function drawPlots(rawData) {
       data.sort(function(a, b){ return d3.descending(+a.values[a.values.length-1].Tourists, +b.values[b.values.length-1].Tourists); });
     
       layoutCharts(data);
-console.log(data);
+      console.log(data);
     }
  
 function appendChart(data, i) {
     
      maxY = d3.max(data.values, function(d){
-        return +d.Tourists;
+        return yValue(d);
     });
+    
+    console.log(maxY);
     
     yScale.domain([0, maxY]);
     
@@ -154,7 +153,7 @@ line.y(function(d){ return yScale(yValue(d)); });
           return area(d.values);
       });
       lines.append("path")
-        .attr("class", "line1")
+        .attr("class", "line")
         .style("pointer-events", "none")
         .attr("d", function(d) {
         return line(d.values);
@@ -188,7 +187,7 @@ line.y(function(d){ return yScale(yValue(d)); });
       circle = lines.append("circle")
         .attr("r", 3.2)
         .attr("opacity", 0)
-        .attr("class", "circle")
+        .attr("class", "smallcircle")
         .style("pointer-events", "none");
       caption = lines.append("text")
         .attr("class", "caption")
@@ -234,33 +233,46 @@ function mouseover() {
     d3.selectAll("circle").attr("opacity", 1.0);
     d3.selectAll(".static_year").classed("hidden", true);
     return mousemove.call(this); // current graph base
-    };
+    }
 
     function mousemove() {
+        
       var date, index, year;
       year = xScale.invert(d3.mouse(this)[0]).getFullYear();
       date = dateFormat.parse('' + year);
       index = 0;
-      d3.selectAll("circle")
+      d3.selectAll("circle.smallcircle")
         .attr("cx", xScale(date))
         .attr("cy", function(d) {
+             var maxY = d3.max(d.values, function(d){
+                return yValue(d);
+            });
+
+            yScale.domain([0, maxY]);
           index = bisect(d.values, date, 0, d.values.length - 1);
           return yScale(yValue(d.values[index]));
       });
       d3.selectAll("text.caption").attr("x", xScale(date))
         .attr("y", function(d) {
+             var maxY = d3.max(d.values, function(d){
+                return yValue(d);
+            });
+
+            yScale.domain([0, maxY]);
           return yScale(yValue(d.values[index]));
        }).text(function(d) {
         return yValue(d.values[index]);
         });
       d3.selectAll("text.year").attr("x", xScale(date)).text(year);
-    };
+    }
 
     function mouseout() {
       d3.selectAll(".static_year").classed("hidden", false);
       d3.selectAll("circle").attr("opacity", 0);
       d3.selectAll("text.caption").text("");
       d3.selectAll("text.year").text("");
-    };
+    }
+    
+
     
 }

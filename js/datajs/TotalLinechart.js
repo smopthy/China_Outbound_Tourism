@@ -1,13 +1,13 @@
 function Firstchart(expenditure, population) {
     
     
-   var years = d3.keys(expenditure[0]).slice(0,19);
+   var years = d3.keys(expenditure[0]).slice(0,20);
     var newExp = [];
     expenditure.forEach(function(d,i) {
         years.forEach(function(year) {
             newExp.push({countryName: d.CountryName, 
                             year: year,
-                            number: +d[year] * 0.000001
+                            number: d3.round(+d[year]/ 1000000000, 1)
                            });            
         });
     });
@@ -36,7 +36,7 @@ function Firstchart(expenditure, population) {
     d3.select("#Tot").on("click", function(d, i) {
                 d3.selectAll("button").classed("selected", false);
                 d3.select(this).classed("selected", true);
-                redraw(newExp,59503);
+                redraw(newExp,55.3);
         });
 
     d3.select("#Per").on("click", function(d, i) {
@@ -47,10 +47,10 @@ function Firstchart(expenditure, population) {
 
     d3.select("#Tot").classed("selected", true);
 
-var LineChart_width = 800;
-var LineChart_height = 400;
+var LineChart_width = 760;
+var LineChart_height = 500;
 
-var margin = { top: 20, right: 200, bottom: 40, left: 100};
+var margin = { top: 23, right: 150, bottom: 20, left: 50};
 
 var Chart1width = LineChart_width - margin.right - margin.left;
 var Chart1height = LineChart_height - margin.top - margin.bottom;
@@ -83,7 +83,7 @@ var yAxis = d3.svg.axis()
     .scale(yScale)
     .orient("left")
     .outerTickSize([0]);
-
+   
 var tooltip = d3.select("body")
                             .append("div")
                             .attr("class", "mytooltip");
@@ -110,7 +110,7 @@ var svg = d3.select("#BigLinechart")
             .attr("class", "y axis")
             .call(yAxis); 
 
-    redraw(newExp,59503);
+    redraw(newExp,55.3);
 
 function redraw(data,cutoff){
     yScale
@@ -220,11 +220,7 @@ var labels = groups.selectAll("text.label")
             var lastYear = d[d.length - 1].year;
             return xScale(dateFormat.parse(lastYear));})
         .attr("dx", ".35em")
-        .attr("dy", function(d) {
-            if (d[d.length-1].countryName == "China") {
-                return "-.5em";
-            } else { return ".10em"; }
-        });
+        .attr("dy", ".10em");
 
 
     labels.classed("textshow", function(d,i){
@@ -261,7 +257,7 @@ function mouseoverFunc(d){
 
            return tooltip
             .style("display", null)
-            .html("<p>Country: <span style='color:#b35900'>" + d.countryName +"</span>" + "<br>Year: <span style='color:#b35900'>" + d.year +"</span>" + "<br>Total:<span style='color:#b35900'> " + d.number + "</span>" + "</p>");
+            .html("<p>Country: <span style='color:#b35900'>" + d.countryName +"</span>" + "<br>Year: <span style='color:#b35900'>" + d.year +"</span>" + "<br>Total:<span style='color:#b35900'> " +"$"+ d.number +" billion" + "</span>" + "</p>");
        }
 
         else {
