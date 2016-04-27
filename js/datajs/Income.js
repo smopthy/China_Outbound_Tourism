@@ -1,7 +1,4 @@
-d3.csv("Income.csv", function(error, data){
- if (error) {
-    console.log("Error");
- } 
+function PersonInc(data){
 
 var margin = {top: 20, bottom: 100, left: 20, right: 5};
 var width = 400 - margin.left - margin.right;
@@ -112,4 +109,4 @@ var svg = d3.select("#incomechart").append("svg")
             d3.select(this).style("fill", color(d.FamilyIncome));
         });
 
-})
+}

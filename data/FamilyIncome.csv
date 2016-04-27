@@ -1,5 +1,1 @@
-FamilyIncome,PercentD
-<$1.5k,17.7
-$1.5k-3.1k,38.96
-$3.1k-4.6k,23.75
->$4.6k,19.59
+FamilyIncome,PercentD<$1.5k,17.7$1.5k-3.1k,38.96$3.1k-4.6k,23.75>$4.6k,19.59

@@ -6,17 +6,21 @@ queue()
     .defer(d3.csv, "data/TopPlace.csv")
     .defer(d3.csv, "data/Age.csv")
     .defer(d3.csv, "data/Marriage.csv")
+    .defer(d3.csv, "data/Income.csv")
     .await(ready);
       
-function ready(error,expenditure,population,china,provinces,countrymultiple,agebar,marrybar) {
+function ready(error,expenditure,population,china,provinces,countrymultiple,agebar,marrybar,personincome) {
 
-console.log(error, expenditure, population,china,agebar, marrybar);
+//console.log(error, expenditure, population,china,agebar, marrybar);
     
     Firstchart(expenditure, population);
     makeMap(china, provinces);
     smallMultiple(countrymultiple);
     Agechart(agebar);
     Marrychart(marrybar);
+    PersonInc(personincome);
+
+    
 }
 
 
