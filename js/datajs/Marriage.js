@@ -1,4 +1,4 @@
-function Marrychart(data){
+function Marriage(data){
 var margin = {top: 20, bottom: 200, left: 80, right: 20};
 var width = 450 - margin.left - margin.right;
 var height = 550 - margin.top - margin.bottom;

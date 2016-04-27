@@ -82,12 +82,6 @@ margin-left:400px;
 }
 /*-------END---------*/
 
-/*------Navigation Bar------*/
-
-
-
-/*-----End-------*/
-
 /*------svg--------*/
 svg {
 background-color: white;
@@ -140,6 +134,7 @@ background:#ff884d;
   padding: 5px 10px 5px 10px;
   background: white;
     outline:none;
+    margin-right:10px;
 }
 
 .button:hover {
@@ -154,7 +149,7 @@ background:#ff884d;
   background: #ffc299;
 }
 
-/*---------first chart--------*/
+/*---------chart 1--------*/
 
 #BigLinechart {
 margin-left:15px;
@@ -236,31 +231,7 @@ stroke-opacity:1;
 stroke-width:3px;
 }
 
-
-/*-----------------MapChina-----------*/
-
-
-#provinces path {
-    fill : #00ffbf;
-    stroke : #fff;
-    stroke-width: 2px;
-}
-
-#explode-provinces path {
-    fill : rgba(0,0,0,0);
-    stroke : rgba(0,0,0,0);
-}
-
-#explode-provinces:hover {
-    cursor:pointer;
-}
-
-#explode-provinces path.highlighted-province {
-    fill: #009973;
-    
-}
-
-/*--------Small Multiple-------*/
+/*--------chart 2-------*/
 
 .description2 {
 margin-right: 50px;
@@ -340,6 +311,102 @@ fill: grey;
 font: 20px sans-serif;
 fill: grey;   
     }
+
+
+#graphic {
+  padding-top: 0px;
+    height: 1700px;
+}
+
+
+#sections {
+  position: relative;
+  width: 250px;
+  top: 0px;
+  z-index: 90;
+  padding-bottom: 20px;
+  left:700px;
+}
+
+#sections .step {
+  margin-bottom: 200px;
+  font-family: "TiemposTextWeb-Regular","Georgia";
+  font-size: 16px;
+  line-height: 23px;
+  color: #767678;
+}
+
+#sections .title {
+  font-family: Arial,Helvetica,"san-serif";
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: #262626;
+  line-height: 1.2em;
+}
+
+#blank {
+height:10px;
+
+}
+
+#blankbegin{
+height:1px;
+}
+
+#agechart{
+position: fixed !important;
+left:80px;
+bottom:293px;
+}
+
+#marriagechart{
+position: fixed; 
+left:80px;
+bottom:76px;
+}
+
+#incomechart{
+    position: fixed;
+ left:80px;
+    bottom:218px;
+
+}
+    
+#spendchart{
+position: fixed;
+ left:80px;
+    bottom:218px;
+}
+    
+#consumptionchart{
+position: fixed !important;
+left:80px;
+bottom:240px;
+}
+/*-----------------chart 4-----------*/
+
+
+#provinces path {
+    fill : #00ffbf;
+    stroke : #fff;
+    stroke-width: 2px;
+}
+
+#explode-provinces path {
+    fill : rgba(0,0,0,0);
+    stroke : rgba(0,0,0,0);
+}
+
+#explode-provinces:hover {
+    cursor:pointer;
+}
+
+#explode-provinces path.highlighted-province {
+    fill: #009973;
+    
+}
+
 
 
 </style>

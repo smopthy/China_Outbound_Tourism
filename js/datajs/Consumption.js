@@ -1,11 +1,9 @@
-d3.csv("Consumption.csv", function(error, data){
- if (error) {
-    console.log("Error");
- } 
-
-var margin = {top: 20, bottom: 200, left: 80, right: 20};
+function Consum(data){
+console.log(data);
+    
+var margin = {top: 20, bottom: 180, left: 20, right: 20};
 var width = 450 - margin.left - margin.right;
-var height = 550 - margin.top - margin.bottom;
+var height = 450 - margin.top - margin.bottom;
     
 var yScale = d3.scale.linear()
                     .domain([0, d3.max(data, function (d) {
@@ -114,4 +112,4 @@ var svg = d3.select("#consumptionchart").append("svg")
             d3.select(this).style("fill", color(d.Consumption));
         });
 
-})
+}

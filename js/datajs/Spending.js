@@ -1,7 +1,4 @@
-d3.csv("Spending.csv", function(error, data){
- if (error) {
-    console.log("Error");
- } 
+function Spend(data){
 
 var margin = {top: 20, bottom: 100, left: 5, right: 5};
 var width = 400 - margin.left - margin.right;
@@ -112,4 +109,4 @@ var svg = d3.select("#spendchart").append("svg")
             d3.select(this).style("fill", color(d.Spending));
         });
 
-})
+}

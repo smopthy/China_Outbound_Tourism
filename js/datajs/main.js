@@ -7,23 +7,28 @@ queue()
     .defer(d3.csv, "data/Age.csv")
     .defer(d3.csv, "data/Marriage.csv")
     .defer(d3.csv, "data/Income.csv")
+    .defer(d3.csv, "data/Spending.csv")
+    .defer(d3.csv, "data/Consumption.csv")
     .await(ready);
       
-function ready(error,expenditure,population,china,provinces,countrymultiple,agebar,marrybar,personincome) {
-
-//console.log(error, expenditure, population,china,agebar, marrybar);
+function ready(error,expenditure,population,china,provinces,countrymultiple,age, marriage, income, spend, consum) {
+  
+console.log(error, expenditure, population, china, age,marriage, income, spend, consum);
     
     Firstchart(expenditure, population);
     makeMap(china, provinces);
     smallMultiple(countrymultiple);
-    Agechart(agebar);
-    Marrychart(marrybar);
-    PersonInc(personincome);
-
+    Age(age);
+    Marriage(marriage);
+    Income(income);
+    Spend(spend);
+    Consum(consum); 
     
+    var scroll = scroller()
+    .container(d3.select('#graphic'));
+   scroll(d3.selectAll('.step'));
+  scroll.update(update);  
 }
-
-
 
 d3.selection.prototype.moveToFront = function() {
   return this.each(function(){
@@ -33,3 +38,6 @@ d3.selection.prototype.moveToFront = function() {
 
 
 $('.header').stickyNavbar();
+
+
+

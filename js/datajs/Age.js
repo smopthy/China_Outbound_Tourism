@@ -1,4 +1,5 @@
-function Agechart(data){
+function Age(data){
+
 var margin = {top: 20, bottom: 100, left: 80, right: 20};
 var width = 400 - margin.left - margin.right;
 var height = 400 - margin.top - margin.bottom;

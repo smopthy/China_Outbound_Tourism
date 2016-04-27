@@ -1,4 +1,4 @@
-function PersonInc(data){
+function Income(data){
 
 var margin = {top: 20, bottom: 100, left: 20, right: 5};
 var width = 400 - margin.left - margin.right;
