@@ -50,7 +50,7 @@ var cols, margin_left;
   }
 
   function getTop(i) {
-    return 2030 + fullheight * Math.floor(i/cols) + "px";
+    return 2080 + fullheight * Math.floor(i/cols) + "px";
   }
 
   function setChartDivHeight(data_to_plot) {

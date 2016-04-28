@@ -264,7 +264,7 @@ function mouseoverFunc(d){
 
         return tooltip
             .style("display", null)
-            .html("<p>Country: <span style='color:#b35900'>" + d.countryName +"</span>" + "<br>Year: <span style='color:#b35900'>" + d.year +"</span>" + "<br>Per Capita:<span style='color:#b35900'> " + d3.round(+d.number, 1)+ "</span>" + "</p>");
+            .html("<p>Country: <span style='color:#b35900'>" + d.countryName +"</span>" + "<br>Year: <span style='color:#b35900'>" + d.year +"</span>" + "<br>Per Capita:<span style='color:#b35900'> " +"$"+ d3.round(+d.number, 1)+ "</span>" + "</p>");
         }
     } // end mouseover
 
