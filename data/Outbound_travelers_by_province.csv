@@ -1,33 +1,1 @@
-name,Percentage,Population,Residents
-Anhui,2,6083,16795.5
-Beijing,16,2152,44488.6
-Chongqing,2,2991,18351.9
-Fujian,2,3806,23330.9
-Gansu,0.8,2591,12184.7
-Guangdong,16,10724,25685
-Guangxi,2,4754,15557.1
-Guizhou,0.8,3508,12371.1
-Hainan,0.8,903,17476.5
-Hebei,2,7384,16647.4
-Heilongjiang,2,3833,17404.4
-Henan,2,9436,15695.2
-Hubei,4,5816,18283.2
-Hunan,2,6737,17621.7
-Jiangsu,8,7960,27172.8
-Jiangxi,0.8,4542,16734.2
-Jilin,0.8,2752,17520.4
-Liaoning,4,4391,22820.2
-NeiMongolZizhiqu,0.8,2505,20559.3
-Ningxia,0.8,662,15906.8
-Qinghai,0.8,583,14374
-Shaanxi,2,3775,15836.7
-Shandong,4,9789,20864.2
-Shanghai,16,2426,45965.8
-Shanxi,2,3648,16538.3
-Sichuan,4,8140,15749
-Taiwan,8,2343.4,60398
-Tianjin,2,1517,28832.3
-XinjiangUygur,0.8,2298,15096.6
-XizangZizhiqu(Tibet),0.8,318,10730.2
-Yunnan,0.8,4714,13772.2
-Zhejiang,8,5508,32657.6
+name,Percentage,Population,Residents,StoryAnhui,2,60830000,2519.325,Jacky Wang likes to go shopping to JapanBeijing,16,21520000,6673.29,Jacky 4 likes to go shopping to JapanChongqing,2,29910000,2752.785,Jacky 5Wang likes to go shopping to JapanFujian,2,38060000,3499.635,Jacky 4 likes to go shopping to JapanGansu,0.8,25910000,1827.705,Jacky 5Wang likes to go shopping to JapanGuangdong,16,107240000,3852.75,Jacky 4 likes to go shopping to JapanGuangxi,2,47540000,2333.565,Jacky 5Wang likes to go shopping to JapanGuizhou,0.8,35080000,1855.665,Jacky 4 likes to go shopping to JapanHainan,0.8,9030000,2621.475,Jacky 5Wang likes to go shopping to JapanHebei,2,73840000,2497.11,Jacky 4 likes to go shopping to JapanHeilongjiang,2,38330000,2610.66,Jacky 5Wang likes to go shopping to JapanHenan,2,94360000,2354.28,Jacky 4 likes to go shopping to JapanHubei,4,58160000,2742.48,Jacky 5Wang likes to go shopping to JapanHunan,2,67370000,2643.255,Jacky 4 likes to go shopping to JapanJiangsu,8,79600000,4075.92,Jacky 5Wang likes to go shopping to JapanJiangxi,0.8,45420000,2510.13,Jacky 4 likes to go shopping to JapanJilin,0.8,27520000,2628.06,Jacky 5Wang likes to go shopping to JapanLiaoning,4,43910000,3423.03,Jacky 4 likes to go shopping to JapanNeiMongolZizhiqu,0.8,25050000,3083.895,Jacky 5Wang likes to go shopping to JapanNingxia,0.8,6620000,2386.02,Jacky 4 likes to go shopping to JapanQinghai,0.8,5830000,2156.1,Jacky 5Wang likes to go shopping to JapanShaanxi,2,37750000,2375.505,Jacky 4 likes to go shopping to JapanShandong,4,97890000,3129.63,Jacky 5Wang likes to go shopping to JapanShanghai,16,24260000,6894.87,Jacky 4 likes to go shopping to JapanShanxi,2,36480000,2480.745,Jacky 5Wang likes to go shopping to JapanSichuan,4,81400000,2362.35,Jacky 4 likes to go shopping to JapanTaiwan,8,23434000,9059.7,Jacky 5Wang likes to go shopping to JapanTianjin,2,15170000,4324.845,Jacky 4 likes to go shopping to JapanXinjiangUygur,0.8,22980000,2264.49,Jacky 5Wang likes to go shopping to JapanXizangZizhiqu(Tibet),0.8,3180000,1609.53,Jacky 4 likes to go shopping to JapanYunnan,0.8,47140000,2065.83,Jacky 5Wang likes to go shopping to JapanZhejiang,8,55080000,4898.64,Jacky 4 likes to go shopping to Japan
