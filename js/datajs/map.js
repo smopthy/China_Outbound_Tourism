@@ -1,8 +1,8 @@
 function makeMap(china, provinces){
 
-    var color = d3.scale.threshold()
-    .domain([0.8, 2, 4, 8, 16])
-    .range(["#ffeee6", "#ffccb3", "#ff884d", "#ff661a", "#e64d00", "#802b00"]);
+    var color = d3.scale.ordinal()
+    .domain(["0.8", "2", "4", "8", "16"])
+    .range(["#ffccb3", "#ff884d", "#ff661a", "#e64d00", "#802b00"]);
 
 provinces.forEach(function(province){
 var dataPro = province.name;
@@ -26,8 +26,8 @@ var dataPro = province.name;
     var center = d3.geo.centroid(china);
     var ratio = 500/960;
     
-        var width = 650;
-        var height = 650;
+        var width = 580;
+        var height = 580;
     
     var projection = d3.geo.mercator()
         .scale(width)
@@ -41,9 +41,13 @@ var dataPro = province.name;
         .attr("width", width + 400)
         .attr("height", height);
     
-     var tooltip = d3.select("body")
+     var tooltip1 = d3.select("body")
                             .append("div")
                             .attr("class", "maptooltip");
+    
+    var tooltip2 = d3.select("body")
+                            .append("div")
+                            .attr("class", "scattertip");
     
     var chinadata = china.features;
     
@@ -99,8 +103,9 @@ var dataPro = province.name;
         .data(chinadata)
         .enter().append("path")
         .attr("d", path)
-        .style("fill", function(d) { var value = d.properties.Percent;
-            return color(value); });
+        .style("fill", function(d) { 
+            var value = d.properties.Percent;
+            if (value) return color(value); });
     
     var explode_states = g.append("g")
         .attr("id", "explode-states")
@@ -108,9 +113,10 @@ var dataPro = province.name;
         .data(chinadata)
         .enter().append("path")
         .attr("d", path)
-      .style("fill", function(d) { var value = d.properties.Percent;
-      return color(value); });
-   
+      .style("fill", function(d) {
+          var value = d.properties.Percent;
+          if (value) return color(value); });
+
      var default_size = function(d, i) { return 150; };
       var exploder = d3.geo.exploder()
                       .projection(projection)
@@ -120,7 +126,20 @@ var dataPro = province.name;
     // This exploder will create a grid of the states
     // when called on a featurelist selection
     
-   
+   svg.append('g')
+    .attr("class", "legendColors")
+    .attr("transform", "translate(30,500)");
+    
+    
+  var legendColors = d3.legend.color()
+    .shapeWidth(30)
+    .cells(4)
+    .orient("horizontal")
+    .labels(["<0.8%", "2%", "4%", "8%", ">16%"])
+    .scale(color); // our existing color scale
+    
+    svg.select(".legendColors")
+    .call(legendColors);
     
     function addButton(text, callback) {
         d3.select("#buttons").append('button')
@@ -160,6 +179,7 @@ var dataPro = province.name;
           explode_states.style("display", "none");
           
           d3.select("#info").style("display", "none");
+          d3.select(".legendColors").style("display", "none");
 
       });
 
@@ -172,7 +192,8 @@ var dataPro = province.name;
               .attr("d", path)
               .attr("transform", "translate(0,0)");
         
-        d3.select("#info").style("display", null);
+        d3.select("#info").style("display", "none");
+          d3.select(".legendColors").style("display", null);
           
           exploder.position(function(d, i) {
               return [800, height/2-30];
@@ -198,35 +219,43 @@ var dataPro = province.name;
     
         
     explode_states.on('mouseover', function(){
-        console.log(d3.select(this).data()[0]);
-    var data = d3.select(this).data()[0];
         
-    tooltip
-        .style("display", null)
-        .html("<p>" + data.properties.Story + "</p>");
-    });
-   
-   explode_states.on('mousemove', function(){
-   console.log(d3.event.pageX, d3.event.pageY);
-    tooltip
-        .style("top", (d3.event.pageY - 5) + "px" )
-        .style("left", (d3.event.pageX + 5) + "px");
+        console.log("exploded_states mouseover", d3.select(this).data()[0]);
+        var data = d3.select(this).data()[0];
+
+
+        tooltip1
+            .style("display", null)
+            .html("<p> <span style='color:#ff661a; font-size:20px;'>"+"Click the province to get more Info"+"</span>"+ "<br><span style='color:#b35900;'>" + "Province:"+" </span>"+ data.properties.ADM1 + "<br><span style='color:#b35900;'>"+ "Story:"+"</span>" + data.properties.Story + "</p>");
+        });
+
+       explode_states.on('mousemove', function(){
+
+        tooltip1
+            .style("top", (d3.event.pageY - 5) + "px" )
+            .style("left", (d3.event.pageX + 5) + "px");
    
    }); 
     
    explode_states.on('mouseout', function(){
-   tooltip.style("display", "none");
+   tooltip1.style("display", "none");
    });
     
+   
     
     explode_states.on('click', function() {
     
         var data = d3.select(this).data()[0];
         
+
+        
         explode_states.style("display", null);
         
+        d3.select("#info").style("display", null);
+        
+        
         d3.select("#info")
-            .html("<p>" + "Province:"+""+ data.properties.ADM1 + "<br>Population:" + (+data.properties.Population / 1000000)+"million" +"<br>Per capita disposable income:" +"$"+ +data.properties.Residents + "</p>");
+            .html("<p> <span style='color:#b35900; font-size:20px;'>" + "Province:"+" </span>"+ data.properties.ADM1 + "<br><span style='color:#b35900; font-size:20px;'>Population:" +"</span>"+ (+data.properties.Population / 1000000)+"million" +"<br><span style='color:#b35900; font-size:20px;'>Per capita disposable income:" +"</span>"+"$"+ +data.properties.Residents + "</p>");
         
         d3.selectAll('.highlighted-state')
             .transition()
@@ -245,5 +274,22 @@ var dataPro = province.name;
             .call(exploder); 
     });
    
+    d3.selectAll("g#states path").on("mouseover", function(data) {
+        
+        tooltip2
+            .style("display", null)
+            .html("<p> <span style='color:#b35900;'>" + "Province:"+" </span>"+ data.properties.ADM1 + "<br><span style='color:#b35900;'>Population:" +"</span>"+ (+data.properties.Population / 1000000)+"million" +"<br><span style='color:#b35900;'>Per capita disposable income:" +"</span>"+"$"+ +data.properties.Residents + "</p>");
+        })
+    .on('mousemove', function(){
+
+        tooltip2
+            .style("top", (d3.event.pageY - 5) + "px" )
+            .style("left", (d3.event.pageX + 5) + "px");
+   
+   })
+    .on('mouseout', function(){
+   tooltip2.style("display", "none");
+   });
+
     
 }

@@ -18,7 +18,7 @@ var xScale = d3.scale.ordinal()
     
 var color = d3.scale.ordinal()
             .domain(["<$0.77k", "$0.77k-1.2k", "$1.2k-1.5k", "$1.5k-2.3k", ">$2.3k"])
-            .range(["#ffbb99","#cc4400","#ff9966","#ff9966", "#ff661a", ]);
+            .range(["#ffbb99","#cc4400","#ff9966","#ff9966", "#ff661a"]);
     
 var xAxis = d3.svg.axis()
                     .scale(xScale)

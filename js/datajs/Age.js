@@ -51,7 +51,7 @@ var svg = d3.select("#agechart").append("svg")
         .style("text-anchor", "middle")
         .style("font-size", "16px")
         .attr("transform", "translate(" + width / 2 + ", 50)")
-        .text("Age");
+        .text("Age distribution of Chinese outbound tourists");
     
     svg.selectAll(".bar")
         .data(data)
