@@ -165,7 +165,7 @@ var dataPro = province.name;
         y_axis_g.transition().duration(500).style('opacity', 1);
 
         states.transition()
-              .duration(500)
+              .duration(700)
               .call(
         exploder
             .size(function(d, i) { return 50; })
@@ -188,7 +188,7 @@ var dataPro = province.name;
         explode_states.style("display", null);
           
         states.transition()
-              .duration(500)
+              .duration(700)
               .attr("d", path)
               .attr("transform", "translate(0,0)");
         
@@ -201,7 +201,7 @@ var dataPro = province.name;
           
            d3.selectAll('.highlighted-state')
             .transition()
-            .duration(500)
+            .duration(700)
             .attr("d", path)
             .attr("transform", "translate(0,0)")
             .each('end', function() {
@@ -212,7 +212,7 @@ var dataPro = province.name;
         d3.select(this)
             .classed('highlighted-state', true)
             .transition()
-            .duration(500)
+            .duration(700)
             .call(exploder); 
       
 });
@@ -259,7 +259,7 @@ var dataPro = province.name;
         
         d3.selectAll('.highlighted-state')
             .transition()
-            .duration(500)
+            .duration(700)
             .attr("d", path)
             .attr("transform", "translate(0,0)")
             .each('end', function() {
@@ -270,7 +270,7 @@ var dataPro = province.name;
         d3.select(this)
             .classed('highlighted-state', true)
             .transition()
-            .duration(500)
+            .duration(700)
             .call(exploder); 
     });
    
