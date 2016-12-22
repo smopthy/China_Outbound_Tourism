@@ -40,7 +40,7 @@ color:grey;
 }
 
 .sectiontitle {
-font-size: 50px;
+font-size: 45px;
 margin-left: 66px;
 color: #b33c00;
 font-family: 'Lato';
@@ -65,29 +65,30 @@ font-family: 'Lato';
 }
 
 .headtitle1 {
-margin-top:340px;
-font-size: 38px;
-margin-left:48px;
+margin-top:300px;
+font-size: 35px;
+margin-left:40px;
+font-weight:bold;
+background-color: rgba(255, 255, 255, .5);
 }
 
 .headtitle2 {
-margin-top:5px;
 font-size: 50px;
-margin-left:80px;
 font-weight:bold;
+background-color: rgba(255, 255, 255, .5);
+margin-left:150px;
 }
 
 .textBox {
 background-color: rgba(255, 255, 255, .5);
-    padding: 1.25rem;
-    margin-left: 45px;
-    width: 530px;
+padding: 1.25rem;
+margin-left: 40px;
 }
 
 .headp{
 color: grey;
-  font-size: 20px;
-  line-height: 1.2;
+font-size: 20px;
+line-height: 1.2;
 margin:5px;
 }
 
@@ -95,9 +96,8 @@ margin:5px;
 font-family: 'Dancing Script', cursive;
 color:orange;
 font-size:20px;
-margin-left:345px;
-    margin-top: 26px;
-    margin-bottom: 30px;
+margin-bottom: 30px;
+margin-left:100px;
 }
 /*-------END---------*/
 
