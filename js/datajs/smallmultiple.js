@@ -1,4 +1,6 @@
-function smallMultiple(rawData) {
+function smallMultiple(countrymultiple) {
+    console.log(countrymultiple);
+    
 var fullwidth = 250,
     fullheight = 220,
     margin = {top: 15,right: 20,bottom: 40,left: 40};
@@ -79,7 +81,7 @@ var cols, margin_left;
   }
 
 var data;
-drawPlots(rawData);
+drawPlots(countrymultiple);
     
 function setupScales(data){
     var extentX, maxY;
@@ -90,11 +92,11 @@ function setupScales(data){
         return xScale.domain(extentX);
 }
 
-function transformData(rawData){
+function transformData(countrymultiple){
 var dateFormat = d3.time.format("%Y");
 var Top10,Changing_Trend,Country;
 
-    rawData.forEach(function(d) { 
+    countrymultiple.forEach(function(d) { 
     d.date = dateFormat.parse(d.Year)
     })
     
@@ -102,13 +104,13 @@ var Top10,Changing_Trend,Country;
      return d.Location;
     })
     .sortValues(function(a,b){ return d3.ascending(a.date, b.date); })
-    .entries(rawData);
+    .entries(countrymultiple);
     
     return nest;
 }
 
-function drawPlots(rawData) {
-      data = transformData(rawData);
+function drawPlots(countrymultiple) {
+      data = transformData(countrymultiple);
       // default sort order
       data.sort(function(a, b){ return d3.descending(+a.values[a.values.length-1].Tourists, +b.values[b.values.length-1].Tourists); });
     

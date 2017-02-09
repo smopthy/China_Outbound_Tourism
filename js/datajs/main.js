@@ -12,8 +12,8 @@ queue()
     .await(ready);
       
 function ready(error,expenditure,population,china,provinces,countrymultiple,age, marriage, income, spend, consum) {
-  
-console.log(error, expenditure, population, china, age,marriage, income, spend, consum);
+
+console.log(error, expenditure, population, china, provinces,countrymultiple,age,marriage, income, spend, consum);
     
     Firstchart(expenditure, population);
     makeMap(china, provinces);

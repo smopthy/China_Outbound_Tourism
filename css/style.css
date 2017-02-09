@@ -269,7 +269,7 @@ margin-left: 50px;
 }
 
 .chart {
-  position: absolute;
+  float:left;
   padding-right: 5px;
   padding-bottom: 5px;
   padding-left:0;
