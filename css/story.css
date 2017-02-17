@@ -296,7 +296,7 @@ nav ul li {
         }
     }
     /*-------button-------*/
-    .button.selected {
+   .buttonAll.selected {
         background: #ff884d;
         border-radius: 5px;
         font-family: 'Lato';
@@ -308,7 +308,7 @@ nav ul li {
         border-color: none;
         opacity: 0.9;
     }
-    .button {
+    .buttonAll {
         border-radius: 5px;
         font-family: 'Lato';
         border: 2px solid #ff884d;
@@ -320,7 +320,7 @@ nav ul li {
         outline: none;
         margin-right: 10px;
     }
-    .button:hover {
+    .buttonAll:hover {
         border-radius: 5px;
         font-family: 'Lato';
         border: 2px solid #ff884d;
@@ -331,11 +331,12 @@ nav ul li {
         outline: none;
         background: #ffc299;
     }
-    footer {
+    
+    #footerNew {
         margin-top: 20px;
         background-color: #ffeee6;
     }
-    footer ul {
+    #footerNew ul {
         list-style-type: none;
         margin-left: 20px;
     }
