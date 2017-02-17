@@ -104,10 +104,13 @@ var svg = d3.select("#BigLinechart")
     svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + Chart1height + ")")
+        .style("fill", "grey")
             .call(xAxis);
 
     svg.append("g")
             .attr("class", "y axis")
+            .style("stroke","grey")
+            .style("stroke-width","1px")
             .call(yAxis); 
 
     redraw(newExp,55.3);
