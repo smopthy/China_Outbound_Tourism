@@ -232,12 +232,20 @@ nav ul li {
     line-height: 1.5;
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 766px) {
     nav ul li {
         width: 100%;
         padding: 7px 0;
         margin: 0;
     }
+=======
+.chart {
+  position: absolute;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left:0;
+>>>>>>> origin/gh-pages
 }
 
 nav ul a {
@@ -370,3 +378,8 @@ color:#b33c00;
 margin-top:20px;
 margin-left: 20px;
 }
+<<<<<<< HEAD
+=======
+
+</style>
+>>>>>>> origin/gh-pages
