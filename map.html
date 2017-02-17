@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>d3-exploder</title>
+
+    <style>
+        .mapheadline {
+            font-family: "Lato";
+            color: grey;
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            margin-left: 94px;
+        }
+        
+        #states path {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+        
+        #explode-states path {
+            stroke: white;
+        }
+        
+        #explode-states:hover {
+            cursor: pointer;
+        }
+        
+        .maptooltip {
+            position: absolute;
+            z-index: 10;
+        }
+        
+        .maptooltip p {
+            background: white;
+            border: orange 2px solid;
+            border-radius: 5px;
+            padding: 5px;
+            max-width: 500px;
+            font-weight: bold;
+            margin-left: 5px;
+            color: dimgrey;
+        }
+        
+        .scattertip {
+            position: absolute;
+            z-index: 10;
+        }
+        
+        .scattertip p {
+            background: white;
+            border: orange 2px solid;
+            border-radius: 5px;
+            padding: 5px;
+            max-width: 500px;
+            font-weight: bold;
+            margin-left: 5px;
+            color: dimgrey;
+        }
+        
+        #info {
+            position: absolute;
+            margin-left: 720px;
+            margin-top: 400px;
+        }
+        
+        #info p {
+            font-size: 16px;
+            color: grey;
+        }
+        .button.selected {
+background:#ff884d;
+  border-radius: 5px;
+  font-family: 'Lato';
+  color: white;
+  font-size: 16px;
+     font-weight: bold;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  border-color:none;
+    opacity: 0.9;
+}
+
+.button {
+  border-radius: 5px;
+  font-family: 'Lato';
+  border:2px solid #ff884d;
+  color: #ff884d;
+  font-size: 16px;
+    font-weight: bold;
+  padding: 5px 10px 5px 10px;
+  background: white;
+    outline:none;
+    margin-right:10px;
+}
+
+.button:hover {
+  border-radius: 5px;
+  font-family: 'Lato';
+  border:2px solid #ff884d;
+  color: white;
+  font-size: 16px;
+     font-weight: bold;
+  padding: 5px 10px 5px 10px;
+  outline:none;
+  background: #ffc299;
+}
+    </style>
+</head>
+
+<body>
+  
+
+    <div id="mapcontent">
+        <div id="buttons"></div>
+        <div id="info"></div>
+        <div id="map"></div>
+        <div id="legend"></div>
+    </div>
+
+
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="http://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.21.0/d3-legend.js"></script>
+    <script src="http://bsouthga.github.io/d3-exploder/d3-exploder.js"></script>
+
+    <script src="china.js"></script>
+</body>
+
+</html>
